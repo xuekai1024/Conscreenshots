@@ -1,9 +1,22 @@
-###获取坐标
 import time
 import pyautogui
 
+
 time.sleep(5)
-# 等待用户点击屏幕上的一个点
-print('请点击屏幕上的一个点...')
-x, y = pyautogui.position()
-print(f'您点击的点的坐标为：({x}, {y})')
+# 等待用户点击屏幕上的第一个点
+print('请点击屏幕上要截图区域的左上角...')
+x1, y1 = pyautogui.position()
+
+time.sleep(10)
+# 等待用户点击屏幕上的第二个点
+print('请点击屏幕上要截图区域的右下角...')
+x2, y2 = pyautogui.position()
+time.sleep(5)
+# 计算要截图的区域的左上角坐标和宽度、高度
+x = min(x1, x2)
+y = min(y1, y2)
+width = abs(x1 - x2)
+height = abs(y1 - y2)
+
+# 输出要截图的区域的左上角坐标和宽度、高度
+print(f'要截图的区域为：({x}, {y}, {width}, {height})')
