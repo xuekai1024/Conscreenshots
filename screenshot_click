@@ -1,0 +1,28 @@
+import time
+import pyautogui
+from datetime import datetime
+
+# 获取屏幕尺寸
+screenWidth, screenHeight = pyautogui.size()
+
+# 定义需要截图的区域
+x1, y1, width, height = (378, 173, 1158, 814)
+
+# 定义截图间隔时间（秒）
+interval = 2
+
+# 定义截图计数器
+count = 0
+
+while count < 500:
+    # 使用 PyAutoGUI 库捕获屏幕截图，并将其保存为图片文件
+    now = datetime.now()
+    timestamp = datetime.timestamp(now)
+    filename = f"screenshot_{count}_{int(timestamp)}.png"
+    screenshot = pyautogui.screenshot(region=(x1, y1, width, height))
+    screenshot.save(filename)
+    #
+    pyautogui.click(1681, 1022)
+    # 增加计数器并等待指定的时间
+    count += 1
+    time.sleep(interval)
